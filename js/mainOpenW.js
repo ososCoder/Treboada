@@ -42,12 +42,10 @@ const apiCallGeocoding = async (municipio) => {
     console.log(data);
 
     const { lat, lon } = data[0];
-    console.log(lat);
-    console.log(lon);
 
     //llamada a la función con los argumentos latitude & longitude
-    await getForecastWeather(lat, lon);
     await getCurrentWeather(lat, lon);
+    await getForecastWeather(lat, lon);
   } catch (err) {
     console.error(err);
   }

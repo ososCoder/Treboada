@@ -1,19 +1,49 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="css/style.css" />
-    <script src="js/mainOpenW.js" defer></script>
+    <!-- <script src="js/mainOpenW.js" defer></script> -->
     <title>Document</title>
   </head>
   <body>
-    <header></header>
+    <header>
+      <h1>Treboada</h1>
+      <img src="/css/icons/menu_ham.svg" alt="menu" />
+    </header>
     <main>
+      <h2>El tiempo en todos los municipios de España</h2>
       <form name="form">
-        <input type="text" name="input" />
+        <input type="text" name="input" placeholder="Introduce un municipio" />
+        <img src="/css/icons/search.svg" alt="search" />
       </form>
+      <section class="weatherNow">
+        <div class="skyState">
+          <h3>El tiempo ahora: soleado</h3>
+        </div>
+        <div class="actualTemp">
+          <h3>20ºC</h3>
+        </div>
+        <div class="maxTemp">
+          <h3>25ºC</h3>
+        </div>
+        <div class="minTemp">
+          <h3>12ºC</h3>
+        </div>
+        <div class="sunrise">
+          <h3>07:35</h3>
+        </div>
+        <div class="sunset">
+          <h3>21:41</h3>
+        </div>
+      </section>
+      <section class="weatherForecast"></section>
     </main>
+    <footer>
+      <p>&copy Todos los derechos reservados</p>
+      <p>Creado con <a href="https://openweathermap.org/">OpenWeather</a></p>
+    </footer>
   </body>
 </html>

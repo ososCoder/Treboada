@@ -86,7 +86,7 @@ form > img {
 .weatherNow {
   display: grid;
   grid-template-columns: 1.5fr 1fr 1fr;
-  grid-template-rows: repeat(3, 1fr);
+  grid-template-rows: 1fr 100px 100px;
   grid-template-areas:
     'skyState skyState skyState'
     'actualTemp maxTemp sunrise'

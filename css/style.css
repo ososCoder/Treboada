@@ -48,7 +48,7 @@ main {
 }
 
 main > h2 {
-  font-size: 1rem;
+  font-size: 1.2rem;
   font-weight: 500;
   text-align: center;
   margin: 1.5rem 0;
@@ -86,7 +86,7 @@ form > img {
 .weatherNow {
   display: grid;
   grid-template-columns: 1.5fr 1fr 1fr;
-  grid-template-rows: 1fr 100px 100px;
+  grid-template-rows: 1fr;
   grid-template-areas:
     'skyState skyState skyState'
     'actualTemp maxTemp sunrise'

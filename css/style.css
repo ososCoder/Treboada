@@ -48,7 +48,7 @@ main {
 }
 
 main > h2 {
-  font-size: 1.2rem;
+  font-size: 1.3rem;
   font-weight: 500;
   text-align: center;
   margin: 1.5rem 0;
@@ -223,10 +223,11 @@ form > img {
 
 /*proximas horas*/
 .proximasHoras {
-  margin-top: 0.7rem;
+  margin-top: 1.5rem;
   color: #fff;
   font-weight: 600;
   font-size: 1.5rem;
+  font-weight: 500;
 }
 
 /*SECTION WEATHER FORECAST*/
@@ -236,7 +237,7 @@ form > img {
   grid-auto-rows: 50px;
   grid-auto-columns: 1fr;
   gap: 0.5rem;
-  margin: 0.5rem 0 1rem 0;
+  margin: 0.2rem 0 1rem 0;
 }
 
 .exampleDiv1 {
@@ -248,7 +249,22 @@ form > img {
   -webkit-backdrop-filter: blur(7.1px);
   border: 1px solid rgba(37, 37, 37, 0.34);
   width: 100%;
+  padding: 0 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: #fff;
+  font-size: 1rem;
 }
+
+.exampleDiv1 > h3 {
+  font-weight: 500;
+}
+
+.exampleDiv1 > img {
+  width: 3.5rem;
+}
+
 /*FOOTER###############################################################################################################*/
 footer {
   display: flex;

@@ -53,7 +53,7 @@ const getForecastWeather = async (latitude, longitude, name) => {
     );
     const data = await response.json();
     //llamada a renderForecastWeather
-    renderForecastWeather(data, name);
+    renderForecastWeather(data);
     console.log(data);
   } catch (err) {
     console.error(err);
@@ -162,4 +162,36 @@ const renderActualWeather = (data, name) => {
 };
 
 //RENDER FORECAST WEATHER///////////////////////////////////////////////////////////////////////////////////////////////////
-const renderForecastWeather = (data, name) => {};
+const renderForecastWeather = (data) => {
+  //destructuring para obtener un array de previsión
+  const { list } = data;
+  console.log(list);
+
+  //seleccion de la section .weatherForecast
+  const sectionWeatherForecast = document.querySelector('.weatherForecast');
+
+  //Horas y día del forecast y actual
+  const todayDate = new Date().getDate();
+  const todayHour = new Date().getHours();
+
+  const forecastDate = new Date(list.dt * 1000).getDate();
+  const forecastHour = new Date(list.dt * 1000).getHours();
+
+  //check de hora y día. Si la hora actual es igual y el mismo día llamar a una función de append del pronóstico
+
+  //PROBAR CON EL CHECK DEL FOR. HAY ALGÚN ERROR AQUI
+  for (const check of list) {
+    if (forecastDate === todayDate) {
+      const newDiv = document.createElement('div');
+      newDiv.innerHTML = `
+        <h3>XX:XX</h3>
+        <h3>${check.weather.description}</h3>
+        <img />
+      `;
+      sectionWeatherForecast.append(newDiv);
+    }
+  }
+};
+
+console.log(new Date(1669831200 * 1000).getUTCHours());
+console.log(new Date(1669831200 * 1000).getUTCMinutes());

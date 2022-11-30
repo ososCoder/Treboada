@@ -1,6 +1,30 @@
 //OPEN WEATHER KEY/////////////////////////////////////////////////////////////////////////////////////////////////////////
 const KEY = '7e44fe40f6070e033fef8c5210183815';
 
+//OPEN WEATHER ICONS/////////////////////////////////////////////////////////////////////////////////////////////////////////
+const arrayWeatherIcons = [
+  '01d',
+  '01n',
+  '02d',
+  '02n',
+  '03d',
+  '03n',
+  '04d',
+  '04n',
+  '09d',
+  '09n',
+  '10d',
+  '10n',
+  '11d',
+  '11n',
+  '13d',
+  '13n',
+  '50d',
+  '50n',
+];
+
+const urlIcons = 'http://openweathermap.org/img/wn/[ICON CODE]@2x.png';
+
 //API CALL URL/////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //api.openweathermap.org/data/2.5/forecast?lat={lat}&lon={lon}&appid={API key} --> forecast
 //http://api.openweathermap.org/geo/1.0/direct?q=${municipio}&limit=1&appid=${KEY} --> geocoding
@@ -22,12 +46,15 @@ const getCurrentWeather = async (latitude, longitude, name) => {
 };
 
 //API WEATHER CALL (forecast)//////////////////////////////////////////////////////////////////////////////////////////////
-const getForecastWeather = async (latitude, longitude) => {
+const getForecastWeather = async (latitude, longitude, name) => {
   try {
     const response = await fetch(
       `https://api.openweathermap.org/data/2.5/forecast?lat=${latitude}&lon=${longitude}&units=metric&lang=es&appid=${KEY}`
     );
     const data = await response.json();
+    //llamada a renderForecastWeather
+    renderForecastWeather(data, name);
+    console.log(data);
   } catch (err) {
     console.error(err);
   }
@@ -40,7 +67,6 @@ const apiCallGeocoding = async (municipio) => {
       `http://api.openweathermap.org/geo/1.0/direct?q=${municipio}&limit=5&appid=${KEY}`
     );
     const data = await response.json();
-    console.log(data);
 
     //checkeo de country === ES
     for (const checkES of data) {
@@ -49,6 +75,7 @@ const apiCallGeocoding = async (municipio) => {
         const { lat, lon, name } = checkES;
         //llamada a la función con los argumentos latitude ,longitude y name
         await getCurrentWeather(lat, lon, name);
+        await getForecastWeather(lat, lon, name);
         break;
       } else {
         throw new Error('Municipio no encontrado'); //--> se puede armar función para mostrar error
@@ -79,7 +106,6 @@ const renderActualWeather = (data, name) => {
 
   //municipio
   const municipioName = name;
-  console.log(municipioName);
 
   //weather
   const weather = data.weather[0].description;
@@ -134,3 +160,6 @@ const renderActualWeather = (data, name) => {
   </div>
   `;
 };
+
+//RENDER FORECAST WEATHER///////////////////////////////////////////////////////////////////////////////////////////////////
+const renderForecastWeather = (data, name) => {};

@@ -37,9 +37,9 @@ const getCurrentWeather = async (latitude, longitude, name) => {
       `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&units=metric&lang=es&appid=${KEY}`
     );
     const data = await response.json();
+
     //llamada a renderActualWeather
     renderActualWeather(data, name);
-    console.log(data);
   } catch (err) {
     console.error(err);
   }
@@ -54,7 +54,6 @@ const getForecastWeather = async (latitude, longitude, name) => {
     const data = await response.json();
     //llamada a renderForecastWeather
     renderForecastWeather(data);
-    console.log(data);
   } catch (err) {
     console.error(err);
   }
@@ -170,28 +169,56 @@ const renderForecastWeather = (data) => {
   //seleccion de la section .weatherForecast
   const sectionWeatherForecast = document.querySelector('.weatherForecast');
 
-  //Horas y día del forecast y actual
-  const todayDate = new Date().getDate();
-  const todayHour = new Date().getHours();
+  //si el día es igual al de hoy en fecha, creamos arrays de tiempo, hora + minutos, iconWeatherCode
+  const todayDay = new Date().getDate();
 
-  const forecastDate = new Date(list.dt * 1000).getDate();
-  const forecastHour = new Date(list.dt * 1000).getHours();
+  const arrayWeather = [];
+  const arrayHour = [];
 
-  //check de hora y día. Si la hora actual es igual y el mismo día llamar a una función de append del pronóstico
+  for (let i = 0; i < list.length; i++) {
+    const date = new Date(list[i].dt * 1000).getUTCDate();
+    if (todayDay === date) {
+      arrayWeather.push(list[i].weather[0].description);
+    }
 
-  //PROBAR CON EL CHECK DEL FOR. HAY ALGÚN ERROR AQUI
-  for (const check of list) {
-    if (forecastDate === todayDate) {
-      const newDiv = document.createElement('div');
-      newDiv.innerHTML = `
-        <h3>XX:XX</h3>
-        <h3>${check.weather.description}</h3>
-        <img />
-      `;
-      sectionWeatherForecast.append(newDiv);
+    const hour = new Date(list[i].dt * 1000).getUTCHours();
+    if (todayDay === date) {
+      arrayHour.push(hour + ':' + '00');
     }
   }
+  console.log(arrayWeather);
+  console.log(arrayHour);
+
+  //Ejemplo funcionando
+  sectionWeatherForecast.innerHTML = `
+    <h3 class="exampleDiv1">Hola</h3>
+  `;
 };
 
-console.log(new Date(1669831200 * 1000).getUTCHours());
-console.log(new Date(1669831200 * 1000).getUTCMinutes());
+const date = new Date();
+console.log('new Date():', date);
+
+const dateString = date.toISOString();
+console.log('dateString:', dateString);
+let dateDesdeString = new Date(dateString);
+console.log('new Date(dateString):', dateDesdeString);
+
+console.log(
+  dateDesdeString.getDay(),
+  dateDesdeString.getMonth(),
+  dateDesdeString.getFullYear(),
+  date.getHours(),
+  date.getMinutes()
+);
+
+console.log(
+  date.getDay(),
+  date.getMonth(),
+  date.getFullYear(),
+  date.getHours(),
+  date.getMinutes()
+);
+
+// UT
+console.log(dateDesdeString.getTime());
+console.log(date.getTime());

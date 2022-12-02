@@ -222,7 +222,7 @@ form > img {
 }
 
 /*proximas horas*/
-.proximasHoras {
+.pForecast {
   margin-top: 1.5rem;
   color: #fff;
   font-weight: 600;
@@ -240,7 +240,7 @@ form > img {
   margin: 0.2rem 0 1rem 0;
 }
 
-.exampleDiv1 {
+.forecastDiv {
   padding: 1rem 0.4rem;
   background: rgba(37, 37, 37, 0.5);
   border-radius: 16px;
@@ -257,11 +257,13 @@ form > img {
   font-size: 1rem;
 }
 
-.exampleDiv1 > h3 {
+.forecastDiv > h3 {
   font-weight: 500;
+  font-size: 1rem;
+  text-transform: uppercase;
 }
 
-.exampleDiv1 > img {
+.forecastDiv > img {
   width: 3.5rem;
 }
 

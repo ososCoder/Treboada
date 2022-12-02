@@ -168,33 +168,38 @@ const renderForecastWeather = (data) => {
 
   //seleccion de la section .weatherForecast
   const sectionWeatherForecast = document.querySelector('.weatherForecast');
+  sectionWeatherForecast.innerHTML = '';
 
-  //si el día es igual al de hoy en fecha, creamos arrays de tiempo, hora + minutos, iconWeatherCode
+  const pForecast = document.createElement('p');
+  pForecast.className = 'pForecast';
+  pForecast.innerHTML = 'Próximas horas';
+  sectionWeatherForecast.append(pForecast);
+
+  //si el día es igual al de hoy en fecha, creamos arrays de tiempo, hora, iconWeatherCode
   const todayDay = new Date().getDate();
-
-  const arrayWeather = [];
-  const arrayHour = [];
 
   for (let i = 0; i < list.length; i++) {
     const date = new Date(list[i].dt * 1000).getUTCDate();
     if (todayDay === date) {
-      arrayWeather.push(list[i].weather[0].description);
-    }
+      const hour = new Date(list[i].dt * 1000).getUTCHours() + ':' + '00';
+      const skyState = list[i].weather[0].description;
+      const iconWeather = list[i].weather[0].icon;
 
-    const hour = new Date(list[i].dt * 1000).getUTCHours();
-    if (todayDay === date) {
-      arrayHour.push(hour + ':' + '00');
+      const divWeather = document.createElement('div');
+      divWeather.className = 'forecastDiv';
+
+      divWeather.innerHTML = `
+      <h3>${hour}</h3>
+      <h3>${skyState}</h3>
+      <img src="http://openweathermap.org/img/wn/${iconWeather}@2x.png"/>
+    `;
+
+      sectionWeatherForecast.append(divWeather);
     }
   }
-  console.log(arrayWeather);
-  console.log(arrayHour);
-
-  //Ejemplo funcionando
-  sectionWeatherForecast.innerHTML = `
-    <h3 class="exampleDiv1">Hola</h3>
-  `;
 };
 
+//explicacion Stefano
 const date = new Date();
 console.log('new Date():', date);
 

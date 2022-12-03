@@ -131,6 +131,9 @@ const renderActualWeather = (data, name) => {
     .toLocaleString();
   const sunset = sunsetHours + ':' + sunsetMinutes.padEnd(2, '0');
 
+  //icon
+  const icon = data.weather[0].icon;
+
   //pusheo al section weather now
   sectionWeatherNow.innerHTML = `
   <div class="skyState">
@@ -157,6 +160,7 @@ const renderActualWeather = (data, name) => {
     <img src="/css/icons/sunset.png" alt="anochecer" />
     <h3>${sunset}</h3>
   </div>
+  <img class="bigIconWeather" src="http://openweathermap.org/img/wn/${icon}@2x.png"/>
   `;
 };
 
@@ -165,17 +169,24 @@ const renderForecastWeather = (data) => {
   //destructuring para obtener un array de previsión
   const { list } = data;
   console.log(list);
-
-  //seleccion de la section .weatherForecast
+  //seleccion de la section .weatherForecast y .weatherNextDays
   const sectionWeatherForecast = document.querySelector('.weatherForecast');
   sectionWeatherForecast.innerHTML = '';
+
+  const sectionWeatherNextDays = document.querySelector('.weatherNextDays');
+  sectionWeatherNextDays.innerHTML = '';
 
   const pForecast = document.createElement('p');
   pForecast.className = 'pForecast';
   pForecast.innerHTML = 'Próximas horas';
   sectionWeatherForecast.append(pForecast);
 
-  //si el día es igual al de hoy en fecha, creamos arrays de tiempo, hora, iconWeatherCode
+  const pForecastNextDays = document.createElement('p');
+  pForecastNextDays.className = 'pForecast';
+  pForecastNextDays.innerHTML = 'Próximos días (12:00h)';
+  sectionWeatherNextDays.append(pForecastNextDays);
+
+  //si el día es igual al de hoy en fecha, pusheamos
   const todayDay = new Date().getDate();
 
   for (let i = 0; i < list.length; i++) {
@@ -195,6 +206,38 @@ const renderForecastWeather = (data) => {
     `;
 
       sectionWeatherForecast.append(divWeather);
+    }
+  }
+
+  //predicción próximos días
+  for (let i = 0; i < list.length; i++) {
+    const date = String(new Date(list[i].dt * 1000).getUTCDate()).padStart(
+      2,
+      0
+    );
+    const month = String(new Date(list[i].dt * 1000).getUTCMonth()).padStart(
+      2,
+      0
+    );
+    const hour = new Date(list[i].dt * 1000).getUTCHours();
+
+    console.log(date, month);
+
+    if (todayDay != date && hour === 12) {
+      const completeDate = date + ' / ' + month;
+      const skyState = list[i].weather[0].description;
+      const iconWeather = list[i].weather[0].icon;
+
+      const divWeather = document.createElement('div');
+      divWeather.className = 'forecastDiv';
+
+      divWeather.innerHTML = `
+      <h3>${completeDate}</h3>
+      <h3>${skyState}</h3>
+      <img src="http://openweathermap.org/img/wn/${iconWeather}@2x.png"/>
+    `;
+
+      sectionWeatherNextDays.append(divWeather);
     }
   }
 };

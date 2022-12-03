@@ -13,17 +13,7 @@ body {
   min-height: 100vh;
   font-family: 'Montserrat', sans-serif;
   padding: 1rem;
-  background: #616161; /* fallback for old browsers */
-  background: -webkit-linear-gradient(
-    to right,
-    #9bc5c3,
-    #616161
-  ); /* Chrome 10-25, Safari 5.1-6 */
-  background: linear-gradient(
-    to right,
-    #9bc5c3,
-    #616161
-  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  background: rgb(25, 102, 147);
 }
 
 /*HEADER###############################################################################################################*/
@@ -95,6 +85,7 @@ form > img {
   justify-content: center;
   gap: 0.5rem;
   position: relative;
+  z-index: 2;
 }
 
 .actualTemp,
@@ -217,8 +208,30 @@ form > img {
 .bigIconWeather {
   position: absolute;
   z-index: -1;
-  top: -2rem;
-  right: 0;
+  bottom: -1rem;
+  left: -5rem;
+  transition: all 0 3s;
+  animation: move 10s ease-in infinite;
+}
+
+@keyframes move {
+  0% {
+    bottom: -10px;
+    left: -40px;
+    opacity: 0;
+    width: 4rem;
+  }
+
+  50% {
+    opacity: 1;
+  }
+
+  100% {
+    bottom: 200px;
+    left: 140px;
+    width: 8rem;
+    opacity: 0;
+  }
 }
 
 /*proximas horas*/
@@ -227,12 +240,12 @@ form > img {
   color: #fff;
   font-weight: 600;
   font-size: 1.5rem;
-  font-weight: 500;
 }
 
 /*SECTION WEATHER FORECAST*/
 /*general*/
-.weatherForecast {
+.weatherForecast,
+.weatherNextDays {
   display: grid;
   grid-auto-rows: 50px;
   grid-auto-columns: 1fr;
@@ -242,7 +255,7 @@ form > img {
 
 .forecastDiv {
   padding: 1rem 0.4rem;
-  background: rgba(37, 37, 37, 0.5);
+  background: rgba(117, 165, 209, 0.5);
   border-radius: 16px;
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
   backdrop-filter: blur(7.1px);
@@ -258,13 +271,13 @@ form > img {
 }
 
 .forecastDiv > h3 {
-  font-weight: 500;
+  font-weight: 600;
   font-size: 1rem;
   text-transform: uppercase;
 }
 
 .forecastDiv > img {
-  width: 3.5rem;
+  width: 4.2rem;
 }
 
 /*FOOTER###############################################################################################################*/

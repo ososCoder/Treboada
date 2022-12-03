@@ -7,7 +7,7 @@
   box-sizing: border-box;
 }
 
-body {
+body.default {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
@@ -51,26 +51,37 @@ form {
   height: 3rem;
   display: flex;
   justify-content: center;
-  gap: 0.3rem;
+  align-items: center;
+  position: relative;
 }
 
 form > input {
   padding: 1rem;
   font-family: 'Montserrat', sans-serif;
-  border-radius: 30px;
-  border: 1px solid silver;
+  border-radius: 30px 0 0 30px;
+  border: 1px solid rgb(201, 201, 201);
   width: 80%;
   font-size: 1rem;
+  position: relative;
+  z-index: 2;
+  height: 53px;
 }
 
-form > img {
-  background-color: rgb(223, 223, 223);
-  border-radius: 50%;
-  border: 1px solid silver;
-  padding: 0.3rem;
-  cursor: pointer;
+.search {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 0 30px 30px 0;
+  width: 50px;
+  height: 53px;
+  position: relative;
+  border: 1px solid rgb(201, 201, 201);
+  background-color: rgb(201, 201, 201);
 }
 
+.search > img {
+  width: 1.8rem;
+}
 /*SECTION WEATHER NOW*/
 /*general*/
 .weatherNow {
@@ -85,7 +96,7 @@ form > img {
   justify-content: center;
   gap: 0.5rem;
   position: relative;
-  z-index: 2;
+  overflow: hidden;
 }
 
 .actualTemp,
@@ -205,19 +216,19 @@ form > img {
 }
 
 /*imagen bigIconWeather*/
-.bigIconWeather {
+.bigIconWeatherLeft {
   position: absolute;
   z-index: -1;
-  bottom: -1rem;
-  left: -5rem;
+  bottom: 0rem;
+  left: 0rem;
   transition: all 0 3s;
   animation: move 10s ease-in infinite;
 }
 
 @keyframes move {
   0% {
-    bottom: -10px;
-    left: -40px;
+    bottom: 0px;
+    left: 0px;
     opacity: 0;
     width: 4rem;
   }
@@ -227,13 +238,41 @@ form > img {
   }
 
   100% {
-    bottom: 200px;
-    left: 140px;
+    bottom: 150px;
+    left: 120px;
     width: 8rem;
     opacity: 0;
   }
 }
 
+.bigIconWeatherRight {
+  position: absolute;
+  z-index: -1;
+  top: 0rem;
+  right: 0;
+  transition: all 0 3s;
+  animation: move2 10s ease-in infinite;
+}
+
+@keyframes move2 {
+  0% {
+    /* bottom: -10px; */
+    right: 0px;
+    opacity: 0;
+    width: 4rem;
+  }
+
+  50% {
+    opacity: 0.6;
+  }
+
+  100% {
+    top: 60px;
+    right: 120px;
+    width: 8rem;
+    opacity: 0;
+  }
+}
 /*proximas horas*/
 .pForecast {
   margin-top: 1.5rem;

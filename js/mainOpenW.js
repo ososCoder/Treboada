@@ -1,30 +1,6 @@
 //OPEN WEATHER KEY/////////////////////////////////////////////////////////////////////////////////////////////////////////
 const KEY = '7e44fe40f6070e033fef8c5210183815';
 
-//OPEN WEATHER ICONS/////////////////////////////////////////////////////////////////////////////////////////////////////////
-const arrayWeatherIcons = [
-  '01d',
-  '01n',
-  '02d',
-  '02n',
-  '03d',
-  '03n',
-  '04d',
-  '04n',
-  '09d',
-  '09n',
-  '10d',
-  '10n',
-  '11d',
-  '11n',
-  '13d',
-  '13n',
-  '50d',
-  '50n',
-];
-
-const urlIcons = 'http://openweathermap.org/img/wn/[ICON CODE]@2x.png';
-
 //API CALL URL/////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //api.openweathermap.org/data/2.5/forecast?lat={lat}&lon={lon}&appid={API key} --> forecast
 //http://api.openweathermap.org/geo/1.0/direct?q=${municipio}&limit=1&appid=${KEY} --> geocoding
@@ -92,7 +68,8 @@ const form = document.forms.form;
 const search = document.querySelector('.search');
 
 //render current weather
-search.addEventListener('click', () => {
+search.addEventListener('click', (e) => {
+  e.preventDefault();
   const inputValue = form.elements.input.value;
   apiCallGeocoding(inputValue);
   form.elements.input.value = '';
@@ -160,7 +137,9 @@ const renderActualWeather = (data, name) => {
     <img src="/css/icons/sunset.png" alt="anochecer" />
     <h3>${sunset}</h3>
   </div>
-  <img class="bigIconWeather" src="http://openweathermap.org/img/wn/${icon}@2x.png"/>
+  <img class="bigIconWeatherLeft" src="http://openweathermap.org/img/wn/${icon}@2x.png"/>
+  <img class="bigIconWeatherRight" src="http://openweathermap.org/img/wn/${icon}@2x.png"/>
+
   `;
 };
 
@@ -220,8 +199,6 @@ const renderForecastWeather = (data) => {
       0
     );
     const hour = new Date(list[i].dt * 1000).getUTCHours();
-
-    console.log(date, month);
 
     if (todayDay != date && hour === 12) {
       const completeDate = date + ' / ' + month;

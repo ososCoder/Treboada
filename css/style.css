@@ -12,36 +12,43 @@ body.default {
   flex-direction: column;
   min-height: 100vh;
   font-family: 'Montserrat', sans-serif;
-  padding: 1rem;
-  background: rgb(25, 102, 147);
+  background: #003049;
 }
 
 /*HEADER###############################################################################################################*/
 header {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
+  padding-top: 1rem;
+  margin-top: 1.5rem;
+  position: relative;
 }
 
 header > img {
   width: 2.5rem;
+  position: absolute;
+  top: -12px;
+  z-index: -1;
 }
 
 header > h1 {
   font-weight: 600;
-  font-size: 2.2rem;
+  font-size: 2.5rem;
+  color: #669bbc;
 }
 
 /*MAIN#################################################################################################################*/
 main {
   flex-grow: 1;
+  padding: 1rem;
 }
 
 main > h2 {
-  font-size: 1.3rem;
+  font-size: 1.2rem;
   font-weight: 500;
   text-align: center;
-  margin: 1.5rem 0;
+  margin-bottom: 1rem;
   color: #fff;
 }
 
@@ -294,7 +301,7 @@ form > input {
 
 .forecastDiv {
   padding: 1rem 0.4rem;
-  background: rgba(117, 165, 209, 0.5);
+  background: #669bbc;
   border-radius: 16px;
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
   backdrop-filter: blur(7.1px);
@@ -322,8 +329,45 @@ form > input {
 /*FOOTER###############################################################################################################*/
 footer {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
-  gap: 0.2rem;
-  font-size: 0.8rem;
+  justify-content: space-around;
+  font-size: 1.2rem;
+  color: #003049;
+  flex-wrap: wrap;
+  width: 100%;
+  padding: 0.5rem 0;
+  background-color: #ffffff60;
+  font-weight: 500;
+}
+
+footer > p:nth-child(2) {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+footer > p:nth-child(3) {
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  /* background-color: #ffffff60; */
+  color: #fff;
+  padding: 0.3rem 0.5rem;
+  border-radius: 16px;
+}
+
+footer > p:nth-child(3) > a {
+  color: #fff;
+}
+
+.github {
+  width: 2.5rem;
+}
+
+.openWeather {
+  height: 2rem;
 }

@@ -139,8 +139,24 @@ const renderActualWeather = (data, name) => {
   </div>
   <img class="bigIconWeatherLeft" src="http://openweathermap.org/img/wn/${icon}@2x.png"/>
   <img class="bigIconWeatherRight" src="http://openweathermap.org/img/wn/${icon}@2x.png"/>
-
   `;
+
+  //animations GSAP
+  gsap.fromTo(
+    '.weatherNow',
+    { y: -60, opacity: 0 },
+    { y: 0, opacity: 1, duration: 1.5, ease: 'expo.out' }
+  );
+  gsap.fromTo(
+    '.weatherForecast',
+    { y: 60, opacity: 0 },
+    { y: 0, opacity: 1, duration: 1.5, ease: 'expo.out' }
+  );
+  gsap.fromTo(
+    '.weatherNextDays',
+    { y: 60, opacity: 0 },
+    { y: 0, opacity: 1, duration: 1.5, ease: 'expo.out' }
+  );
 };
 
 //RENDER FORECAST WEATHER///////////////////////////////////////////////////////////////////////////////////////////////////

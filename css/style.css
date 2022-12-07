@@ -34,7 +34,7 @@ header > img {
 
 header > h1 {
   font-weight: 600;
-  font-size: 2.5rem;
+  font-size: 2.6rem;
   color: #669bbc;
 }
 
@@ -331,6 +331,7 @@ footer {
   display: flex;
   flex-direction: row;
   align-items: center;
+  gap: 1rem;
   justify-content: space-around;
   font-size: 1.2rem;
   color: #003049;
@@ -354,10 +355,7 @@ footer > p:nth-child(3) {
   align-items: center;
   justify-content: center;
   gap: 1rem;
-  /* background-color: #ffffff60; */
   color: #fff;
-  padding: 0.3rem 0.5rem;
-  border-radius: 16px;
 }
 
 footer > p:nth-child(3) > a {

@@ -217,7 +217,7 @@ const renderForecastWeather = (data) => {
     const hour = new Date(list[i].dt * 1000).getUTCHours();
 
     if (todayDay != date && hour === 12) {
-      const completeDate = date + ' / ' + month;
+      const completeDate = date + '/' + month;
       const skyState = list[i].weather[0].description;
       const iconWeather = list[i].weather[0].icon;
 

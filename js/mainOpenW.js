@@ -57,7 +57,28 @@ const apiCallGeocoding = async (municipio) => {
       }
     }
   } catch (err) {
-    console.error(err);
+    // console.error(err);
+    const weatherNowsection = document.querySelector('.weatherNow');
+    const weatherForecastsection = document.querySelector('.weatherForecast');
+    const weatherNextDayssection = document.querySelector('.weatherNextDays');
+
+    weatherNowsection.innerHTML = `
+    <div class="errorDiv">
+      <img src="/css/icons/error.svg" alt="error" />
+      <h2 class="alert">Municipio no encontrado</h2>
+    </div>
+
+    `;
+
+    weatherForecastsection.innerHTML = '';
+    weatherNextDayssection.innerHTML = '';
+
+    //animations GSAP
+    gsap.fromTo(
+      '.errorDiv',
+      { y: 30, opacity: 0 },
+      { y: 0, opacity: 1, duration: 3, ease: 'expo.out' }
+    );
   }
 };
 
@@ -163,7 +184,7 @@ const renderActualWeather = (data, name) => {
 const renderForecastWeather = (data) => {
   //destructuring para obtener un array de previsión
   const { list } = data;
-  console.log(list);
+
   //seleccion de la section .weatherForecast y .weatherNextDays
   const sectionWeatherForecast = document.querySelector('.weatherForecast');
   sectionWeatherForecast.innerHTML = '';
@@ -234,32 +255,3 @@ const renderForecastWeather = (data) => {
     }
   }
 };
-
-//explicacion Stefano
-const date = new Date();
-console.log('new Date():', date);
-
-const dateString = date.toISOString();
-console.log('dateString:', dateString);
-let dateDesdeString = new Date(dateString);
-console.log('new Date(dateString):', dateDesdeString);
-
-console.log(
-  dateDesdeString.getDay(),
-  dateDesdeString.getMonth(),
-  dateDesdeString.getFullYear(),
-  date.getHours(),
-  date.getMinutes()
-);
-
-console.log(
-  date.getDay(),
-  date.getMonth(),
-  date.getFullYear(),
-  date.getHours(),
-  date.getMinutes()
-);
-
-// UT
-console.log(dateDesdeString.getTime());
-console.log(date.getTime());

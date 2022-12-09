@@ -72,6 +72,13 @@ form > input {
   position: relative;
   z-index: 2;
   height: 53px;
+  background-color: rgba(201, 201, 201, 0.5);
+  color: #fff;
+}
+
+form > input::placeholder {
+  color: #fff;
+  font-weight: 00;
 }
 
 .search {
@@ -391,7 +398,7 @@ footer > p:nth-child(3) > a {
 
 /*MEDIA QUERIES*/
 
-@media (min-width: 1000px) {
+@media (min-width: 700px) {
   header > h1 {
     font-size: 3.4rem;
   }
@@ -399,19 +406,72 @@ footer > p:nth-child(3) > a {
   header > img {
     width: 3rem;
   }
+
+  main {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: 50px 100px 300px 1fr;
+    grid-template-areas:
+      'h2 h2'
+      'form form'
+      'weatherNow weatherNow'
+      'weatherForecast weatherNextDays';
+    column-gap: 2rem;
+    align-items: flex-start;
+    margin-bottom: 2rem;
+  }
+
+  main > h2 {
+    grid-area: h2;
+  }
+
+  form {
+    width: 100%;
+    grid-area: form;
+    align-self: flex-start;
+  }
+
   .weatherNow,
   .weatherForecast,
   .weatherNextDays {
-    width: 50%;
+    width: 100%;
+    margin: 0;
   }
 
-  main {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+  .weatherNow {
+    grid-area: weatherNow;
+    grid-template-columns: repeat(3, 1fr);
+    row-gap: 1rem;
+    justify-items: center;
+  }
+  .skyState {
+    justify-self: left;
+  }
+  .actualTemp,
+  .maxTemp,
+  .minTemp,
+  .sunrise,
+  .sunset {
+    width: 75%;
+    align-self: center;
   }
 
-  form > input {
-    width: 50%;
+  .actualTemp {
+    max-height: 10rem;
+  }
+
+  .weatherForecast {
+    grid-area: weatherForecast;
+    align-self: start;
+  }
+
+  .weatherNextDays {
+    grid-area: weatherNextDays;
+    align-self: start;
+  }
+
+  .errorDiv {
+    height: 50px;
+    align-items: start;
   }
 }

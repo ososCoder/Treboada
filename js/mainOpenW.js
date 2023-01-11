@@ -39,7 +39,7 @@ const getForecastWeather = async (latitude, longitude, name) => {
 const apiCallGeocoding = async (municipio) => {
   try {
     const response = await fetch(
-      `http://api.openweathermap.org/geo/1.0/direct?q=${municipio}&limit=5&appid=${KEY}`
+      `https://api.openweathermap.org/geo/1.0/direct?q=${municipio}&limit=5&appid=${KEY}`
     );
     const data = await response.json();
 

@@ -1,23 +1,20 @@
 {
-  "name": "mod3",
+  "name": "the-weather-proyect",
   "version": "1.0.0",
-  "description": "",
+  "description": "A weather information web for Spain territory",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "git+ssh://git@gitlab.com/blueoceanstart/hack-a-boss/jsb13co/mod3-js.git"
+    "url": "git+https://github.com/ososCoder/the-weather-proyect.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://gitlab.com/blueoceanstart/hack-a-boss/jsb13co/mod3-js/issues"
+    "url": "https://github.com/ososCoder/the-weather-proyect/issues"
   },
-  "homepage": "https://gitlab.com/blueoceanstart/hack-a-boss/jsb13co/mod3-js#readme",
-  "devDependencies": {
-    "eslint": "^8.25.0"
-  }
+  "homepage": "https://github.com/ososCoder/the-weather-proyect#readme"
 }

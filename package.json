@@ -16,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/ososCoder/the-weather-proyect/issues"
   },
-  "homepage": "https://github.com/ososCoder/the-weather-proyect#readme"
+  "homepage": "https://github.com/ososCoder/the-weather-proyect#readme",
+  "dependencies": {
+    "dotenv": "^16.0.3"
+  }
 }

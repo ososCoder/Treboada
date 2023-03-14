@@ -1,5 +1,9 @@
-# the-weather-proyect
+<h1>Treboada</h1>
 
-A weather information web for Spain territory
+Treboada is a weather information web for the Spain territory. Treboada means thunderstorm in galician, where we have more than a 1000 definitions to rain.
 
-link: https://treboada.vercel.app/
+Is responsive APP, animated, interface friendly application based on Open Wheater API.
+
+Enjoy 👉: https://treboada.vercel.app/
+
+All rights reserved to ososCoder
